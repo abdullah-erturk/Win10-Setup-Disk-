@@ -42,6 +42,10 @@
 > Seçilen USB/VHD cihaz **tamamen biçimlendirilir** ve üzerindeki tüm veriler silinir.  
 > Lütfen yedek almayı unutmayın.
 
+## 💡NOT
+> Win10+ Kurulum Diski, Windows'u yüklemek için sadece kurulum diskini oluşturur. Bilgisayarınızın minimum sistem gereksinimlerini karşılamaması durumunda, bu kısıtı kendi başınıza aşmanız gerekebilir.
+> Windows 10 sürüm 1507, 1511 veya 1607 Ana Bilgisayar İşletim Sisteminde Win10+ Kurulum Diski oluşturamazsınız. Windows 10'un bu eski sürümleri, çıkarılabilir depolama aygıtlarında birden çok bölüm okumayı ve oluşturmayı desteklemez.
+
 ## 🛠 Katkıda Bulunanlar
 
 - `@rpo`, `@freddie-o`, `@BAU`, `@abbodi1406`, `@mephistooo2`
@@ -86,6 +90,10 @@
 
 > The selected USB/VHD device will be **completely formatted** and all data will be erased.  
 > Please make sure to back up your data.
+
+## 💡NOTE
+> Win10+ Setup Disk just creates the setup disk for installing Windows. In case your computer doesn't meet the minimum system requirements you will have to figure out bypassing it on your own
+> You cannot create a Win10+ Setup Disk on Windows 10 versions 1507, 1511 or 1607 Host OS. These older versions of Windows 10 do not support reading and creating multiple partitions on removable storage devices.
 
 ## 🛠 Contributors
 
