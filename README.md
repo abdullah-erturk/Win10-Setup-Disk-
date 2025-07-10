@@ -1,6 +1,6 @@
 <a href="https://buymeacoffee.com/abdullaherturk" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
-# 💽 Win10+ Setup Disk
+# 💽 Win10+ Setup - Win To Go
 
 ![sample](https://github.com/abdullah-erturk/Win10-Setup-Disk-/blob/main/preview.jpg)
 
