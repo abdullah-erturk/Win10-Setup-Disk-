@@ -6,7 +6,7 @@
 ---
 
 <details>
-<summary>🇹🇷 Türkçe Açıklama</summary>
+<summary>Türkçe Açıklama</summary>
 
 ## 🚀 Özellikler
 
@@ -55,7 +55,7 @@
 ---
 
 <details>
-<summary>🇬🇧 English Description</summary>
+<summary>English Description</summary>
 
 ## 🚀 Features
 
