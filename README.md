@@ -56,6 +56,8 @@
 
 - `@rpo`, `@freddie-o`, `@BAU`, `@abbodi1406`, `@mephistooo2`
 
+- Her türlü öneri ve geri bildirim için lütfen GitHub üzerinden katkıda bulunun.
+
 </details>
 
 ---
@@ -104,5 +106,7 @@
 ## 🛠 Contributors
 
 - `@rpo`, `@freddie-o`, `@BAU`, `@abbodi1406`, `@mephistooo2`
+
+Please contribute via GitHub for any suggestions or feedback.
 
 </details>
