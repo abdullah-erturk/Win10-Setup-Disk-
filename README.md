@@ -107,6 +107,6 @@
 
 - `@rpo`, `@freddie-o`, `@BAU`, `@abbodi1406`, `@mephistooo2`
 
-Please contribute via GitHub for any suggestions or feedback.
+- Please contribute via GitHub for any suggestions or feedback.
 
 </details>
