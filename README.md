@@ -19,7 +19,7 @@
 - Windows ISO dosyasından kurulum USB'si oluşturur  
 - Windows To Go (taşınabilir Windows) desteği  
 - ISO, install.wim veya install.esd dosyalarını destekler  
-- `install.wim` içinde bulunan Windows sürümünü seçme özelliği  
+- `install.wim` içinde bulunan Windows sürümünü seçme özelliği (To Go için)
 - VHD/VHDX ve USB disk desteği  
 - GUI (grafiksel arayüz) ile kullanım  
 - Tam ilerleme çubuğu ve tahmini süre göstergeleri  
@@ -70,7 +70,7 @@
 - Create bootable Windows installation USB from ISO  
 - Full **Windows To Go** support  
 - Supports `install.wim`, `install.esd` and ISO formats  
-- Lets user select desired Windows edition from WIM  
+- Lets user select desired Windows edition from WIM (for To Go)
 - Detects VHD/VHDX and USB drives  
 - GUI powered with progress bars and ETA  
 - Auto partitioning with dual-partition structure (FAT32 + NTFS)  
