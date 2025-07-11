@@ -70,7 +70,7 @@
 - Create bootable Windows installation USB from ISO  
 - Full **Windows To Go** support  
 - Supports `install.wim`, `install.esd` and ISO formats  
-- Lets user select desired Windows edition from WIM (for To Go)
+- Ability to select Windows version in install.wim (for To Go)
 - Detects VHD/VHDX and USB drives  
 - GUI powered with progress bars and ETA  
 - Auto partitioning with dual-partition structure (FAT32 + NTFS)  
