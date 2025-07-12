@@ -32,11 +32,15 @@
 ve
 - auto.cmd dosyası ile de yükseltme yoluyla Windows 11 sistem gereknsinimleri atlanmış olur.
 
-✅ - TPM, Secure Boot, CPU, RAM, disk kontrollerini tamamen atlar
-✅ - Yerel kullanıcı hesabı ile kuruluma izin verir
-✅ - Uyumlu olmayan sistem uyarılarını engeller
-✅ - Güncelleme kanalı uyarılarını bastırır
-✅ - Masaüstü uyarılarını gizler
+✅TPM, Secure Boot, CPU, RAM, disk kontrollerini tamamen atlar.
+
+✅Yerel kullanıcı hesabı ile kuruluma izin verir.
+
+✅Uyumlu olmayan sistem uyarılarını engeller.
+
+✅Güncelleme kanalı uyarılarını bastırır.
+
+✅Masaüstü uyarılarını gizler.
 
 
 ## 💡 Gereksinimler
