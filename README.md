@@ -67,7 +67,6 @@ Böylece `AutoUnattend.xml` dosyası ile sıfırdan kurulumda ve `auto.cmd` dosy
 > Lütfen yedek almayı unutmayın.
 
 ## 💡NOT
-- Windows 11 için: Win10+ Kurulum Diski, Windows 11'i yüklemek için sadece kurulum diskini oluşturur. Bilgisayarınızın minimum Windows 11 sistem gereksinimlerini karşılamaması durumunda, bu kısıtı kendi başınıza aşmanız gerekebilir.
 - Windows 10 için: Windows 10 sürüm 1507, 1511 veya 1607 Ana Bilgisayar İşletim Sisteminde Win10+ Kurulum Diski oluşturamazsınız. Windows 10'un bu eski sürümleri, çıkarılabilir depolama aygıtlarında birden çok bölüm okumayı ve oluşturmayı desteklemez.
 
 ## 🛠 Katkıda Bulunanlar
@@ -136,7 +135,6 @@ This way, the Windows 11 system requirements can be bypassed during a clean inst
 > Please make sure to back up your data.
 
 ## 💡NOTE
-- for Windows 11: Win10+ Setup Disk just creates the setup disk for installing Windows 11 . In case your computer doesn't meet the minimum Windows 11 system requirements you will have to figure out bypassing it on your own
 - for Windows 10: You cannot create a Win10+ Setup Disk on Windows 10 versions 1507, 1511 or 1607 Host OS. These older versions of Windows 10 do not support reading and creating multiple partitions on removable storage devices.
 
 ## 🛠 Contributors
