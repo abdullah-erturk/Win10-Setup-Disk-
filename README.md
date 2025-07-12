@@ -95,6 +95,23 @@ Böylece `AutoUnattend.xml` dosyası ile sıfırdan kurulumda ve `auto.cmd` dosy
 - Automatically configures boot via `bcdboot`, `bcdedit`, etc.
 - For Windows ISOs that have an install.wim over 4GB -- due to the 4GB limitation of FAT32
 
+## Bypass Windows 11 System Requirements
+- While creating a USB Disk:
+It automatically copies the `AutoUnattend.xml` and `auto.cmd` files to the USB root directory.
+
+This way, the Windows 11 system requirements can be bypassed during a clean install using the `AutoUnattend.xml` file, and during an upgrade using the `auto.cmd` file.
+
+✅Completely bypasses TPM, Secure Boot, CPU, RAM, disk checks.
+
+✅Allows installation with a local user account.
+
+✅Prevents non-compliant system warnings.
+
+✅Suppresses update channel warnings.
+
+✅Hides desktop alerts.
+
+
 ## 💡 Requirements
 
 - **Windows 10 or 11**
