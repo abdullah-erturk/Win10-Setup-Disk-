@@ -16,15 +16,29 @@
 
 ## 🚀 Özellikler
 
-- Windows ISO dosyasından kurulum USB'si oluşturur  
-- Windows To Go (taşınabilir Windows) desteği  
-- ISO, install.wim veya install.esd dosyalarını destekler  
-- `install.wim` içinde bulunan Windows sürümünü seçme özelliği (To Go için)
-- VHD/VHDX ve USB disk desteği  
-- GUI (grafiksel arayüz) ile kullanım  
-- Tam ilerleme çubuğu ve tahmini süre göstergeleri  
-- BCD ve BOOT yapılandırma desteği
-- FAT32'nin 4 GB sınırlaması nedeniyle 4 GB'ın üzerinde install.wim dosyasına sahip Windows ISO dosyalarını kolayca USB diske yazdırabilme
+- Windows ISO dosyasından kurulum USB'si oluşturur.  
+- Windows To Go (taşınabilir Windows) desteği. 
+- ISO, install.wim veya install.esd dosyalarını destekler.
+- `install.wim` içinde bulunan Windows sürümünü seçme özelliği. (To Go için)
+- VHD/VHDX ve USB disk desteği. 
+- GUI (grafiksel arayüz) ile kullanım.
+- Tam ilerleme çubuğu ve tahmini süre göstergeleri.
+- BCD ve BOOT yapılandırma desteği.
+- FAT32'nin 4 GB sınırlaması nedeniyle 4 GB'ın üzerinde install.wim dosyasına sahip Windows ISO dosyalarını kolayca USB diske yazdırır.
+
+## Gereksinimleri Atlatma Özelliği
+- USB Disk oluştırma esnasında AutoUnattend.xml ve auto.cmd dosyasını otomatik olarak USB kök dizinine kopyalar.
+- Böylece AutoUnattend.xml dosyası ile sıfırdan kurulumda:
+ve
+- auto.cmd dosyası ile de yükseltme yoluyla Windows 11 sistem gereknsinimleri atlanmış olur.
+
+✅ TPM, Secure Boot, CPU, RAM, disk kontrollerini tamamen atlar
+✅ Yerel kullanıcı hesabı ile kuruluma izin verir
+✅ Uyumlu olmayan sistem uyarılarını engeller
+✅ Güncelleme kanalı uyarılarını bastırır
+✅ Masaüstü uyarılarını gizler
+
+
 
 ## 💡 Gereksinimler
 
