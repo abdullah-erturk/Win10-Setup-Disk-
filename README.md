@@ -67,7 +67,7 @@ Böylece `AutoUnattend.xml` dosyası ile sıfırdan kurulumda ve `auto.cmd` dosy
 > Lütfen yedek almayı unutmayın.
 
 ## 💡NOT
-- Windows 10 için: Windows 10 sürüm 1507, 1511 veya 1607 Ana Bilgisayar İşletim Sisteminde Win10+ Kurulum Diski oluşturamazsınız. Windows 10'un bu eski sürümleri, çıkarılabilir depolama aygıtlarında birden çok bölüm okumayı ve oluşturmayı desteklemez.
+- Windows 10 sürüm 1507, 1511 veya 1607 Ana Bilgisayar İşletim Sisteminde Win10+ Kurulum Diski oluşturamazsınız. Windows 10'un bu eski sürümleri, çıkarılabilir depolama aygıtlarında birden çok bölüm okumayı ve oluşturmayı desteklemez.
 
 ## 🛠 Katkıda Bulunanlar
 
@@ -135,7 +135,7 @@ This way, the Windows 11 system requirements can be bypassed during a clean inst
 > Please make sure to back up your data.
 
 ## 💡NOTE
-- for Windows 10: You cannot create a Win10+ Setup Disk on Windows 10 versions 1507, 1511 or 1607 Host OS. These older versions of Windows 10 do not support reading and creating multiple partitions on removable storage devices.
+- You cannot create a Win10+ Setup Disk on Windows 10 versions 1507, 1511 or 1607 Host OS. These older versions of Windows 10 do not support reading and creating multiple partitions on removable storage devices.
 
 ## 🛠 Contributors
 
