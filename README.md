@@ -27,10 +27,10 @@
 - FAT32'nin 4 GB sınırlaması nedeniyle 4 GB'ın üzerinde install.wim dosyasına sahip Windows ISO dosyalarını kolayca USB diske yazdırır.
 
 ## Windows 11 Sistem Gereksinimlerini Atlatma
-- USB Disk oluştırma esnasında `AutoUnattend.xml ve `auto.cmd dosyasını otomatik olarak USB kök dizinine kopyalar.
-- Böylece AutoUnattend.xml dosyası ile sıfırdan kurulumda:
-ve
-- auto.cmd dosyası ile de yükseltme yoluyla Windows 11 sistem gereknsinimleri atlanmış olur.
+- USB Disk oluştırma esnasında:
+`AutoUnattend.xml ve `auto.cmd dosyasını otomatik olarak USB kök dizinine kopyalar.
+
+Böylece AutoUnattend.xml dosyası ile sıfırdan kurulumda ve auto.cmd dosyası ile de yükseltme yoluyla Windows 11 sistem gereknsinimleri atlanmış olur.
 
 ✅TPM, Secure Boot, CPU, RAM, disk kontrollerini tamamen atlar.
 
