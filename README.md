@@ -80,7 +80,7 @@ Böylece `AutoUnattend.xml` dosyası ile sıfırdan kurulumda ve `auto.cmd` dosy
 
 ## 🛠 Katkıda Bulunanlar
 
-- `@rpo`, `@freddie-o`, `@BAU`, `@abbodi1406`, `@mephistooo2`
+- `@rpo`, `@freddie-o`, `@BAU`, `@abbodi1406`, `@mephistooo2`, `@bensuslu11`
 
 - Her türlü öneri ve geri bildirim için lütfen GitHub üzerinden katkıda bulunun.
 
@@ -148,7 +148,7 @@ This way, the Windows 11 system requirements can be bypassed during a clean inst
 
 ## 🛠 Contributors
 
-- `@rpo`, `@freddie-o`, `@BAU`, `@abbodi1406`, `@mephistooo2`
+- `@rpo`, `@freddie-o`, `@BAU`, `@abbodi1406`, `@mephistooo2`, `@bensuslu11`
 
 - Please contribute via GitHub for any suggestions or feedback.
 
