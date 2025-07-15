@@ -2,7 +2,7 @@
 
 # 💽 Win10+ Setup - Win To Go
 
-![sample](https://github.com/abdullah-erturk/Win10-Setup-Disk-/blob/main/preview.jpg)
+![sample](https://github.com/abdullah-erturk/Win10-Setup-Disk-/blob/main/1.jpg)
 
 
 > Bu PowerShell aracı, bir Windows ISO dosyasından USB kurulum diski veya Windows To Go ortamı oluşturmanızı sağlar. ISO seçimi, disk biçimlendirme, sürüm seçimi ve kurulum adımları grafik arayüz üzerinden kolayca yönetilir.
