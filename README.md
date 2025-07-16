@@ -34,6 +34,7 @@
 - Tam ilerleme çubuğu ve tahmini süre göstergeleri.
 - BCD ve BOOT yapılandırma desteği.
 - FAT32'nin 4 GB sınırlaması nedeniyle 4 GB'ın üzerinde install.wim dosyasına sahip Windows ISO dosyalarını kolayca USB diske yazdırır.
+- Katılımsız kurulum için özel xml dosya seçim desteği
 
 ## Windows 11 Sistem Gereksinimlerini Atlatma
 USB Disk oluştırma esnasında:
@@ -102,6 +103,7 @@ Bu sayede `AutoUnattend.xml` dosyası ile sıfırdan kurulumda ve `auto.cmd` dos
 - Auto partitioning with dual-partition structure (FAT32 + NTFS)  
 - Automatically configures boot via `bcdboot`, `bcdedit`, etc.
 - For Windows ISOs that have an install.wim over 4GB -- due to the 4GB limitation of FAT32
+- Support for custom XML file selection for unattended installation
 
 ## Bypass Windows 11 System Requirements
 While creating a USB Disk:
