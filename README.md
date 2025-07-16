@@ -37,7 +37,7 @@
 - Katılımsız kurulum için özel xml dosya seçim desteği
 
 ## Windows 11 Sistem Gereksinimlerini Atlatma
-USB Disk oluştırma esnasında:
+USB Disk oluşturma esnasında:
 `AutoUnattend.xml` ve `auto.cmd` dosyasını otomatik olarak USB kök dizinine kopyalar.
 
 Bu sayede `AutoUnattend.xml` dosyası ile sıfırdan kurulumda ve `auto.cmd` dosyası ile de yükseltme yoluyla Windows 11 sistem gereksinimleri atlanmış olur.
