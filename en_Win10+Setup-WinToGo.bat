@@ -1,5 +1,5 @@
 <# : hybrid batch + powershell script
-@powershell -noprofile -Window min -c "$param='%*';$ScriptPath='%~f0';iex((Get-Content('%~f0') -Raw))"&exit/b
+@powershell -noprofile -Window Hidden -c "$param='%*';$ScriptPath='%~f0';iex((Get-Content('%~f0') -Raw))"&exit/b
 #>
 
 $Title = "Win10+ Setup Disk - Windows To Go"
