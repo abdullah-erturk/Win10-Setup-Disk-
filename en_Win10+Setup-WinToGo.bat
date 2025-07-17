@@ -2,7 +2,6 @@
 @powershell -noprofile -Window min -c "$param='%*';$ScriptPath='%~f0';iex((Get-Content('%~f0') -Raw))"&exit/b
 #>
 
-$OnlyUSBsticks="NO"
 $Title = "Win10+ Setup Disk - Windows To Go"
 $Host.UI.RawUI.BackgroundColor = "Gray"
 $Host.UI.RawUI.ForegroundColor = "White"
@@ -941,7 +940,7 @@ $ClearAutoUnattendButton.Add_Click({
 $SelectAutoUnattendButton.Add_Click({
     if ($CustomAutoUnattendBrowser.ShowDialog() -ne "Cancel") {
         $Global:CustomAutoUnattendPath = $CustomAutoUnattendBrowser.FileName
-        $SelectAutoUnattendButton.Text = "$($Global:CustomAutoUnattendPath.Split('\')[-1]) seçildi"
+        $SelectAutoUnattendButton.Text = "$($Global:CustomAutoUnattendPath.Split('\')[-1]) seÃ§ildi"
         $ClearAutoUnattendButton.Enabled = $True
 		$BypassTPMCheckbox.Enabled = $False
     }
