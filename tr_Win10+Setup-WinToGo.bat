@@ -2,7 +2,6 @@
 @powershell -noprofile -Window min -c "$param='%*';$ScriptPath='%~f0';iex((Get-Content('%~f0') -Raw))"&exit/b
 #>
 
-$OnlyUSBsticks="NO"
 $Title = "Win10+ Setup Disk - Windows To Go"
 $Host.UI.RawUI.BackgroundColor = "Gray"
 $Host.UI.RawUI.ForegroundColor = "White"
@@ -10,14 +9,14 @@ Clear-Host
 
 #   https://github.com/abdullah-erturk/
 #   https://github.com/abdullah-erturk/Win10-Setup-Disk-
-#   Katkıda bulunanlar: @rpo, @freddie-o, @BAU & @abbodi1406, @mephistooo2, @mustafa-gotr (bensuslu11)
+#   KatkÃ½da bulunanlar: @rpo, @freddie-o, @BAU & @abbodi1406, @mephistooo2, @mustafa-gotr (bensuslu11)
 
 $host.ui.rawui.windowtitle = $title
 Add-Type -AssemblyName System.Windows.Forms
 [System.Windows.Forms.Application]::EnableVisualStyles()
 $Width = 500; $Height = 590
 
-# Global değişkenler
+# Global deÃ°iÃ¾kenler
 $Global:ImagePath = ""
 $Global:dvd = $False
 $Global:ISO = ""
@@ -30,11 +29,11 @@ $Global:Mounted = $False
 $Global:BypassTPM = $False
 $Global:CustomAutoUnattendPath = ""
 
-# Dosya tarayıcı (AutoUnattend.xml)
+# Dosya tarayÃ½cÃ½ (AutoUnattend.xml)
 $CustomAutoUnattendBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{
-    Title="AutoUnattend.xml dosyasını seçin"
+    Title="AutoUnattend.xml dosyasÃ½nÃ½ seÃ§in"
     Multiselect = $false
-    Filter = 'XML Dosyaları (*.xml)|*.xml'
+    Filter = 'XML DosyalarÃ½ (*.xml)|*.xml'
 }
 
 Function Copy_Progression ($Files,$Partition,$fs) {
@@ -47,7 +46,7 @@ Function Copy_Progression ($Files,$Partition,$fs) {
 
     $MainProgressBar.Visible = $True
     $ProgressLabel.Visible = $True
-    $ProgressLabel.Text = "Dosya kopyalama işlemi başlıyor..."
+    $ProgressLabel.Text = "Dosya kopyalama iÃ¾lemi baÃ¾lÃ½yor..."
     $MainProgressBar.Value = 0
 
     ForEach ($File in $Files) {
@@ -61,7 +60,7 @@ Function Copy_Progression ($Files,$Partition,$fs) {
         $SourceFile = [io.file]::OpenRead($FileFullName)
         $DestinationFile = [io.file]::Create($DestFile)
 
-        $OutputTextBox.AppendText("$index/$FilesCount - $(Split-Path $FileFullName -Leaf) kopyalanıyor...`r`n")
+        $OutputTextBox.AppendText("$index/$FilesCount - $(Split-Path $FileFullName -Leaf) kopyalanÃ½yor...`r`n")
         $OutputTextBox.ScrollToCaret()
 
         $StopWatch2 = [Diagnostics.Stopwatch]::StartNew()
@@ -80,7 +79,7 @@ Function Copy_Progression ($Files,$Partition,$fs) {
             } else {[int]$RemainingSeconds1 = 0}
 
             $MainProgressBar.Value = [math]::Min(100, [math]::Max(0, [int]$CompletionRate1))
-            $ProgressLabel.Text = "Tamamlanan: {0:F1}% - {1} dakika {2} saniye kaldı" -f $CompletionRate1,[math]::Truncate($RemainingSeconds1/60),($RemainingSeconds1%60)
+            $ProgressLabel.Text = "Tamamlanan: {0:F1}% - {1} dakika {2} saniye kaldÃ½" -f $CompletionRate1,[math]::Truncate($RemainingSeconds1/60),($RemainingSeconds1%60)
 
             $Form.Refresh()
             [System.Windows.Forms.Application]::DoEvents()
@@ -92,13 +91,13 @@ Function Copy_Progression ($Files,$Partition,$fs) {
         $SourceFile.Close()
         $DestinationFile.Close()
 
-        $OutputTextBox.AppendText("$(Split-Path $FileFullName -Leaf) tamamlandı.`r`n")
+        $OutputTextBox.AppendText("$(Split-Path $FileFullName -Leaf) tamamlandÃ½.`r`n")
         $OutputTextBox.ScrollToCaret()
     }
 
     $MainProgressBar.Value = 100
-    $ProgressLabel.Text = "Dosya kopyalama işlemi tamamlandı!"
-    $OutputTextBox.AppendText("Tüm dosyalar başarıyla kopyalandı.`r`n")
+    $ProgressLabel.Text = "Dosya kopyalama iÃ¾lemi tamamlandÃ½!"
+    $OutputTextBox.AppendText("TÃ¼m dosyalar baÃ¾arÃ½yla kopyalandÃ½.`r`n")
     $OutputTextBox.ScrollToCaret()
 
     $StopWatch1.Stop()
@@ -111,7 +110,7 @@ Function Show_Error ($message) {
     $OutputTextBox.ScrollToCaret()
     $MainProgressBar.Visible = $False
     $ProgressLabel.Visible = $False
-    $ProgressLabel.Text = "Hata oluştu!"
+    $ProgressLabel.Text = "Hata oluÃ¾tu!"
     $ProcessRunning = $False
     Enable_Controls
 }
@@ -130,7 +129,7 @@ Function Disable_Controls {
     $Windows.Enabled = $False
     $Wintogo.Enabled = $False
     $OKButton.Enabled = $False
-    $ExitButton.Text = "Çıkış"
+    $ExitButton.Text = "Ã‡Ã½kÃ½Ã¾"
     $BypassTPMCheckbox.Enabled = $False
     $SelectAutoUnattendButton.Enabled = $False
     $Global:ProcessRunning = $True
@@ -141,7 +140,7 @@ Function Enable_Controls {
     $TabControl.Enabled = $True
     $SelectISOButton.Enabled = $True
     $USBDiskList.Enabled = $True
-    if ($WTGListBox.Visible -eq $True) { # Windows To Go sürüm seçimi görünüyorsa
+    if ($WTGListBox.Visible -eq $True) { # Windows To Go sÃ¼rÃ¼m seÃ§imi gÃ¶rÃ¼nÃ¼yorsa
         $Windows.Enabled = $False
         $Wintogo.Enabled = $True
         $BypassTPMCheckbox.Enabled = $False
@@ -181,7 +180,7 @@ Function Start_Process {
 
     # Onay al
     $result = [System.Windows.Forms.MessageBox]::Show(
-        "USB aygıtı MBR şemaya dönüştürülecek, tekrar bölümlendirilecek ve biçimlendirilecektir.`n`nUSB aygıtında şu anda bulunan tüm bölümler ve veriler silinecektir.`n`nDevam etmek istediğinizden emin misiniz?",
+        "USB aygÃ½tÃ½ MBR Ã¾emaya dÃ¶nÃ¼Ã¾tÃ¼rÃ¼lecek, tekrar bÃ¶lÃ¼mlendirilecek ve biÃ§imlendirilecektir.`n`nUSB aygÃ½tÃ½nda Ã¾u anda bulunan tÃ¼m bÃ¶lÃ¼mler ve veriler silinecektir.`n`nDevam etmek istediÃ°inizden emin misiniz?",
         "UYARI",
         [System.Windows.Forms.MessageBoxButtons]::YesNo,
         [System.Windows.Forms.MessageBoxIcon]::Warning
@@ -192,24 +191,24 @@ Function Start_Process {
     Disable_Controls
 
     $OutputTextBox.Clear()
-    $OutputTextBox.AppendText("İşlem başlıyor...`r`n")
+    $OutputTextBox.AppendText("ÃÃ¾lem baÃ¾lÃ½yor...`r`n")
     $OutputTextBox.ScrollToCaret()
 
     try {
-        # ISO bağlama
+        # ISO baÃ°lama
         if($Global:dvd){
-            $OutputTextBox.AppendText("ISO imajı bağlanıyor ve kontrol ediliyor...`r`n")
+            $OutputTextBox.AppendText("ISO imajÃ½ baÃ°lanÃ½yor ve kontrol ediliyor...`r`n")
             $OutputTextBox.ScrollToCaret()
             $Form.Refresh()
 
-            # ISO zaten bağlı mı kontrol et, sürücü harfini al
+            # ISO zaten baÃ°lÃ½ mÃ½ kontrol et, sÃ¼rÃ¼cÃ¼ harfini al
             If($Global:ISO = (Get-DiskImage $Global:ImagePath|Get-Volume).DriveLetter){
                 $Global:Mounted = $True
             }Else{
-                # ISO'yu bağla ve sürücü harfini al
+                # ISO'yu baÃ°la ve sÃ¼rÃ¼cÃ¼ harfini al
                 $Global:Mounted = $False
                 If(!($Global:ISO = (Mount-DiskImage $Global:ImagePath|Get-Volume).DriveLetter)){
-                    Show_Error "ISO dosyası bağlanamadı"
+                    Show_Error "ISO dosyasÃ½ baÃ°lanamadÃ½"
                     return
                 }
             }
@@ -221,27 +220,27 @@ Function Start_Process {
         # Sistem servisi durdur
         Stop-Service ShellHWDetection -ErrorAction SilentlyContinue >$Null
         $ProgressPreference="SilentlyContinue"
-        $OutputTextBox.AppendText("Hazırlık işlemleri tamamlandı.`r`n")
+        $OutputTextBox.AppendText("HazÃ½rlÃ½k iÃ¾lemleri tamamlandÃ½.`r`n")
         $OutputTextBox.ScrollToCaret()
         $Form.Refresh()
 
         # USB disk temizle
-        $OutputTextBox.AppendText("USB disk temizleniyor ve MBR bölüm şemasına dönüştürülüyor...`r`n")
+        $OutputTextBox.AppendText("USB disk temizleniyor ve MBR bÃ¶lÃ¼m Ã¾emasÃ½na dÃ¶nÃ¼Ã¾tÃ¼rÃ¼lÃ¼yor...`r`n")
         $OutputTextBox.ScrollToCaret()
         $Form.Refresh()
 
         "Select disk $Global:USB`nclean`nconvert MBR`nexit"|diskpart >$Null
         If($LASTEXITCODE -ne 0){
-            Show_Error "Diskpart işlemleri başarısız oldu (Kod: $LASTEXITCODE)"
+            Show_Error "Diskpart iÃ¾lemleri baÃ¾arÃ½sÃ½z oldu (Kod: $LASTEXITCODE)"
             return
         }
 
-        $OutputTextBox.AppendText("USB disk başarıyla temizlendi ve MBR'ye dönüştürüldü.`r`n")
+        $OutputTextBox.AppendText("USB disk baÃ¾arÃ½yla temizlendi ve MBR'ye dÃ¶nÃ¼Ã¾tÃ¼rÃ¼ldÃ¼.`r`n")
         $OutputTextBox.ScrollToCaret()
         $Form.Refresh()
 
-        # FAT32 bölümü oluştur
-        $OutputTextBox.AppendText("FAT32 önyükleme bölümü oluşturuluyor ve aktif olarak işaretleniyor...`r`n")
+        # FAT32 bÃ¶lÃ¼mÃ¼ oluÃ¾tur
+        $OutputTextBox.AppendText("FAT32 Ã¶nyÃ¼kleme bÃ¶lÃ¼mÃ¼ oluÃ¾turuluyor ve aktif olarak iÃ¾aretleniyor...`r`n")
         $OutputTextBox.ScrollToCaret()
         $Form.Refresh()
 
@@ -255,40 +254,40 @@ Function Start_Process {
             }
         }
         Catch{
-            Show_Error "FAT32 bölümü oluşturulamadı"
+            Show_Error "FAT32 bÃ¶lÃ¼mÃ¼ oluÃ¾turulamadÃ½"
             return
         }
 
         $PartitionSize = (Get-Volume ($Global:usbfat32 -Replace ".$")).Size/1GB
         If($PartitionSize -eq 0){
-            Show_Error "FAT32 bölümü boyutu 0 GB"
+            Show_Error "FAT32 bÃ¶lÃ¼mÃ¼ boyutu 0 GB"
             return
         }
 
-        $OutputTextBox.AppendText("FAT32 bölümü başarıyla oluşturuldu ($($PartitionSize.ToString("F2")) GB).`r`n")
+        $OutputTextBox.AppendText("FAT32 bÃ¶lÃ¼mÃ¼ baÃ¾arÃ½yla oluÃ¾turuldu ($($PartitionSize.ToString("F2")) GB).`r`n")
         $OutputTextBox.ScrollToCaret()
         $Form.Refresh()
 
-        # Dosya boyutu kontrolü
+        # Dosya boyutu kontrolÃ¼
         If($Global:SetUp){
             $Files32 = Get-ChildItem $Global:iso\boot, $Global:iso\efi, $Global:iso\sources\boot.wim, $Global:iso\bootmgr.*, $Global:iso\bootmgr -Recurse -File -Force
             $FilesSize = ($Files32 | measure -Sum Length).Sum/1GB
-            $OutputTextBox.AppendText("FAT32 dosya boyutu kontrolü: $($FilesSize.ToString("F2")) GB gerekli.`r`n")
+            $OutputTextBox.AppendText("FAT32 dosya boyutu kontrolÃ¼: $($FilesSize.ToString("F2")) GB gerekli.`r`n")
             $OutputTextBox.ScrollToCaret()
             $Form.Refresh()
 
             If ($FilesSize -gt $PartitionSize){
-                Show_Error "FAT32 bölümü çok küçük ($($PartitionSize.ToString("F2")) GB mevcut, $($FilesSize.ToString("F2")) GB gerekli)"
+                Show_Error "FAT32 bÃ¶lÃ¼mÃ¼ Ã§ok kÃ¼Ã§Ã¼k ($($PartitionSize.ToString("F2")) GB mevcut, $($FilesSize.ToString("F2")) GB gerekli)"
                 return
             }
 
-            $OutputTextBox.AppendText("FAT32 bölümü boyutu yeterli.`r`n")
+            $OutputTextBox.AppendText("FAT32 bÃ¶lÃ¼mÃ¼ boyutu yeterli.`r`n")
             $OutputTextBox.ScrollToCaret()
             $Form.Refresh()
         }
 
-        # NTFS bölümü oluştur
-        $OutputTextBox.AppendText("NTFS kurulum bölümü oluşturuluyor...`r`n")
+        # NTFS bÃ¶lÃ¼mÃ¼ oluÃ¾tur
+        $OutputTextBox.AppendText("NTFS kurulum bÃ¶lÃ¼mÃ¼ oluÃ¾turuluyor...`r`n")
         $OutputTextBox.ScrollToCaret()
         $Form.Refresh()
 
@@ -298,34 +297,34 @@ Function Start_Process {
                 Format-Volume -FileSystem NTFS -NewFileSystemLabel $Label).DriveLetter + ":"
         }
         Catch{
-            Show_Error "NTFS bölümü oluşturulamadı"
+            Show_Error "NTFS bÃ¶lÃ¼mÃ¼ oluÃ¾turulamadÃ½"
             return
         }
 
         $PartitionSize = (Get-Volume ($Global:usbntfs -Replace ".$")).Size/1GB
         If($PartitionSize -eq 0){
-            Show_Error "NTFS bölümü boyutu 0 GB"
+            Show_Error "NTFS bÃ¶lÃ¼mÃ¼ boyutu 0 GB"
             return
         }
 
-        $OutputTextBox.AppendText("NTFS bölümü başarıyla oluşturuldu ($($PartitionSize.ToString("F2")) GB).`r`n")
+        $OutputTextBox.AppendText("NTFS bÃ¶lÃ¼mÃ¼ baÃ¾arÃ½yla oluÃ¾turuldu ($($PartitionSize.ToString("F2")) GB).`r`n")
         $OutputTextBox.ScrollToCaret()
         $Form.Refresh()
 
-        # NTFS dosya boyutu kontrolü
+        # NTFS dosya boyutu kontrolÃ¼
         If($Global:SetUp){
             $FilesNTFS = Get-ChildItem $Global:iso -Recurse -File -Force
             $FilesSize = ($FilesNTFS | measure -Sum Length).Sum/1GB
-            $OutputTextBox.AppendText("NTFS dosya boyutu kontrolü: $($FilesSize.ToString("F2")) GB gerekli.`r`n")
+            $OutputTextBox.AppendText("NTFS dosya boyutu kontrolÃ¼: $($FilesSize.ToString("F2")) GB gerekli.`r`n")
             $OutputTextBox.ScrollToCaret()
             $Form.Refresh()
 
             If($FilesSize -gt $PartitionSize){
-                Show_Error "NTFS bölümü çok küçük ($($PartitionSize.ToString("F2")) GB mevcut, $($FilesSize.ToString("F2")) GB gerekli)"
+                Show_Error "NTFS bÃ¶lÃ¼mÃ¼ Ã§ok kÃ¼Ã§Ã¼k ($($PartitionSize.ToString("F2")) GB mevcut, $($FilesSize.ToString("F2")) GB gerekli)"
                 return
             }
 
-            $OutputTextBox.AppendText("NTFS bölümü boyutu yeterli.`r`n")
+            $OutputTextBox.AppendText("NTFS bÃ¶lÃ¼mÃ¼ boyutu yeterli.`r`n")
             $OutputTextBox.ScrollToCaret()
             $Form.Refresh()
         }
@@ -334,7 +333,7 @@ Function Start_Process {
 
         # Dosya kopyalama veya imaj uygulama
         If($Global:SetUp){
-            $OutputTextBox.AppendText("Dosya kopyalama işlemi başlatılıyor...`r`n")
+            $OutputTextBox.AppendText("Dosya kopyalama iÃ¾lemi baÃ¾latÃ½lÃ½yor...`r`n")
             $OutputTextBox.ScrollToCaret()
             $Form.Refresh()
 
@@ -342,8 +341,8 @@ Function Start_Process {
             Copy_Progression $Filesntfs $Global:usbntfs "NTFS"
 
         } Else {
-            # Windows To Go - Sürüm seçimi ana GUI'de
-            $OutputTextBox.AppendText("Windows To Go için sürüm bilgileri okunuyor...`r`n")
+            # Windows To Go - SÃ¼rÃ¼m seÃ§imi ana GUI'de
+            $OutputTextBox.AppendText("Windows To Go iÃ§in sÃ¼rÃ¼m bilgileri okunuyor...`r`n")
             $OutputTextBox.ScrollToCaret()
             $Form.Refresh()
 
@@ -352,21 +351,21 @@ Function Start_Process {
             $OutputTextBox.ScrollToCaret()
             $Form.Refresh()
 
-            # install.wim dosyasının varlığını kontrol et
+            # install.wim dosyasÃ½nÃ½n varlÃ½Ã°Ã½nÃ½ kontrol et
             $installWimPath = "$Global:ISO\Sources\Install.wim"
             $OutputTextBox.AppendText("Install.wim yolu: $installWimPath`r`n")
             $OutputTextBox.ScrollToCaret()
             $Form.Refresh()
 
             if (!(Test-Path $installWimPath)) {
-                Show_Error "Install.wim dosyası bulunamadı: $installWimPath"
+                Show_Error "Install.wim dosyasÃ½ bulunamadÃ½: $installWimPath"
                 return
             }
 
             try {
 				$WindowsImages = Get-WindowsImage -ImagePath $installWimPath
                     if ($WindowsImages.Count -gt 0) {
-                        # Sürüm seçimi için liste oluştur
+                        # SÃ¼rÃ¼m seÃ§imi iÃ§in liste oluÃ¾tur
                         $WTGListBox.Items.Clear()
                         foreach ($Image in $WindowsImages) {
                             $WTGListBox.Items.Add("$(($Image.ImageName).Trim()) (Index: $($Image.ImageIndex))")
@@ -374,34 +373,34 @@ Function Start_Process {
                         $WTGListBox.SelectedIndex = 0
                         $WTGListBox.Visible = $True
                         $WTGSelectButton.Visible = $True
-                        $OutputTextBox.AppendText("Listelenen Windows sürümlerinden birini seçin ve 'Seç' butonuna tıklayın.`r`n")
+                        $OutputTextBox.AppendText("Listelenen Windows sÃ¼rÃ¼mlerinden birini seÃ§in ve 'SeÃ§' butonuna tÃ½klayÃ½n.`r`n")
                         $OutputTextBox.ScrollToCaret()
                         return
                     } else {
-                    Show_Error "Seçilen ISO dosyasında Windows imajı bulunamadı"
+                    Show_Error "SeÃ§ilen ISO dosyasÃ½nda Windows imajÃ½ bulunamadÃ½"
                     return
                 }
             } catch {
-                Show_Error "Windows imaj bilgileri okunurken hata oluştu: $($_.Exception.Message)"
+                Show_Error "Windows imaj bilgileri okunurken hata oluÃ¾tu: $($_.Exception.Message)"
                 return
             }
         }
 
-        # BCD güncelle
-        $OutputTextBox.AppendText("BCD güncelleniyor...`r`n")
+        # BCD gÃ¼ncelle
+        $OutputTextBox.AppendText("BCD gÃ¼ncelleniyor...`r`n")
         $OutputTextBox.ScrollToCaret()
         $Form.Refresh()
         Update_BCD $Global:usbfat32
 
-        # Sürücü harfini gizle
-        $OutputTextBox.AppendText("FAT32 önyükleme bölümünü gizlemek için sürücü harfi kaldırılıyor...`r`n")
+        # SÃ¼rÃ¼cÃ¼ harfini gizle
+        $OutputTextBox.AppendText("FAT32 Ã¶nyÃ¼kleme bÃ¶lÃ¼mÃ¼nÃ¼ gizlemek iÃ§in sÃ¼rÃ¼cÃ¼ harfi kaldÃ½rÃ½lÃ½yor...`r`n")
         $OutputTextBox.ScrollToCaret()
         $Form.Refresh()
         Get-Volume ($Global:usbfat32 -replace ".$")|Get-Partition| Remove-PartitionAccessPath -accesspath $Global:usbfat32
 
-        # ISO'yu çıkar
+        # ISO'yu Ã§Ã½kar
         If($Global:DVD){
-            $OutputTextBox.AppendText("Bağlanmış ISO imajı çıkarılıyor...`r`n")
+            $OutputTextBox.AppendText("BaÃ°lanmÃ½Ã¾ ISO imajÃ½ Ã§Ã½karÃ½lÃ½yor...`r`n")
             $OutputTextBox.ScrollToCaret()
             $Form.Refresh()
             If(!$Global:Mounted){DisMount-DiskImage $Global:ImagePath >$Null}
@@ -412,12 +411,12 @@ Function Start_Process {
             Write_Additional_Files $Global:usbntfs $Global:CustomAutoUnattendPath $Global:BypassTPM
         }
 
-        # Tamamlandı
+        # TamamlandÃ½
         $MainProgressBar.Value = 100
-        $ProgressLabel.Text = "Tüm işlemler başarıyla tamamlandı!"
-        $OutputTextBox.AppendText("`r`n=== İŞLEMLER TAMAMLANDI ===`r`n")
-        $OutputTextBox.AppendText("Disk başarıyla oluşturuldu!`r`n")
-        $OutputTextBox.AppendText("USB diski güvenli bir şekilde çıkarabilirsiniz.`r`n")
+        $ProgressLabel.Text = "TÃ¼m iÃ¾lemler baÃ¾arÃ½yla tamamlandÃ½!"
+        $OutputTextBox.AppendText("`r`n=== ÃÃLEMLER TAMAMLANDI ===`r`n")
+        $OutputTextBox.AppendText("Disk baÃ¾arÃ½yla oluÃ¾turuldu!`r`n")
+        $OutputTextBox.AppendText("USB diski gÃ¼venli bir Ã¾ekilde Ã§Ã½karabilirsiniz.`r`n")
         $OutputTextBox.ScrollToCaret()
 
     } catch {
@@ -428,10 +427,10 @@ Function Start_Process {
 }
 
 Function Apply_WTG_Image {
-    Disable_Controls # Windows To Go işlemi başlarken kontrolleri pasifleştir
+    Disable_Controls # Windows To Go iÃ¾lemi baÃ¾larken kontrolleri pasifleÃ¾tir
 
     if (-not $WTGListBox.SelectedItem) {
-        $OutputTextBox.AppendText("Lütfen bir Windows sürümü seçin.`r`n")
+        $OutputTextBox.AppendText("LÃ¼tfen bir Windows sÃ¼rÃ¼mÃ¼ seÃ§in.`r`n")
         return
     }
 
@@ -442,11 +441,11 @@ Function Apply_WTG_Image {
     $SelectedItem = $WTGListBox.SelectedItem
     [int]$SelectedIndex = $SelectedItem.ToString().Split('(')[1].Split(':')[1].TrimEnd(')')
 
-    $OutputTextBox.AppendText("Windows To Go imajı uygulanıyor (Index: $SelectedIndex)...`r`n")
+    $OutputTextBox.AppendText("Windows To Go imajÃ½ uygulanÃ½yor (Index: $SelectedIndex)...`r`n")
     $OutputTextBox.ScrollToCaret()
     $MainProgressBar.Visible = $True
     $ProgressLabel.Visible = $True
-    $ProgressLabel.Text = "Windows To Go imajı uygulanıyor. İşlem uzun sürebilir, lütfen bekleyin..."
+    $ProgressLabel.Text = "Windows To Go imajÃ½ uygulanÃ½yor. ÃÃ¾lem uzun sÃ¼rebilir, lÃ¼tfen bekleyin..."
     $MainProgressBar.Style = "Marquee"
     $MainProgressBar.MarqueeAnimationSpeed = 20
     $Form.Refresh()
@@ -463,22 +462,22 @@ Function Apply_WTG_Image {
 
         $MainProgressBar.Style = "Continuous"
         $MainProgressBar.Value = 100
-        $ProgressLabel.Text = "Windows To Go imajı uygulandı!"
+        $ProgressLabel.Text = "Windows To Go imajÃ½ uygulandÃ½!"
 
         If($job.State -ne "Completed"){
             $jobError = Receive-Job -Job $job -ErrorAction SilentlyContinue
             Remove-Job -Job $job -Force
-            Show_Error "İmaj uygulanırken hata oluştu: $jobError"
+            Show_Error "Ãmaj uygulanÃ½rken hata oluÃ¾tu: $jobError"
             return
         }
 
         Remove-Job -Job $job -Force
-        $OutputTextBox.AppendText("Windows To Go imajı başarıyla uygulandı.`r`n")
+        $OutputTextBox.AppendText("Windows To Go imajÃ½ baÃ¾arÃ½yla uygulandÃ½.`r`n")
         $OutputTextBox.ScrollToCaret()
         $Form.Refresh()
 
-        # BCD ayarları
-        $OutputTextBox.AppendText("BCD önyükleme yapılandırması hazırlanıyor...`r`n")
+        # BCD ayarlarÃ½
+        $OutputTextBox.AppendText("BCD Ã¶nyÃ¼kleme yapÃ½landÃ½rmasÃ½ hazÃ½rlanÃ½yor...`r`n")
         $OutputTextBox.ScrollToCaret()
         $Form.Refresh()
 
@@ -490,50 +489,50 @@ Function Apply_WTG_Image {
         Continue_Process
 
     } catch {
-        Show_Error "Windows To Go imajı uygulanırken hata oluştu: $($_.Exception.Message)"
+        Show_Error "Windows To Go imajÃ½ uygulanÃ½rken hata oluÃ¾tu: $($_.Exception.Message)"
     }
 }
 
 Function Continue_Process {
-    # BCD güncelle
-    $OutputTextBox.AppendText("BCD güncelleniyor...`r`n")
+    # BCD gÃ¼ncelle
+    $OutputTextBox.AppendText("BCD gÃ¼ncelleniyor...`r`n")
     $OutputTextBox.ScrollToCaret()
     $Form.Refresh()
     Update_BCD $Global:usbfat32
 
-    # Sürücü harfini gizle
-    $OutputTextBox.AppendText("FAT32 önyükleme bölümünü gizlemek için sürücü harfi kaldırılıyor...`r`n")
+    # SÃ¼rÃ¼cÃ¼ harfini gizle
+    $OutputTextBox.AppendText("FAT32 Ã¶nyÃ¼kleme bÃ¶lÃ¼mÃ¼nÃ¼ gizlemek iÃ§in sÃ¼rÃ¼cÃ¼ harfi kaldÃ½rÃ½lÃ½yor...`r`n")
     $OutputTextBox.ScrollToCaret()
     $Form.Refresh()
     Get-Volume ($Global:usbfat32 -replace ".$")|Get-Partition| Remove-PartitionAccessPath -accesspath $Global:usbfat32
 
-    # ISO'yu çıkar
+    # ISO'yu Ã§Ã½kar
     If($Global:DVD){
-        $OutputTextBox.AppendText("Bağlanmış ISO imajı çıkarılıyor...`r`n")
+        $OutputTextBox.AppendText("BaÃ°lanmÃ½Ã¾ ISO imajÃ½ Ã§Ã½karÃ½lÃ½yor...`r`n")
         $OutputTextBox.ScrollToCaret()
         $Form.Refresh()
         If(!$Global:Mounted){DisMount-DiskImage $Global:ImagePath >$Null}
     }
 
-    # Ek dosyalar yaz (Windows To Go için her zaman false)
+    # Ek dosyalar yaz (Windows To Go iÃ§in her zaman false)
     # Write_Additional_Files $Global:usbntfs $Global:CustomAutoUnattendPath
 
-    # Tamamlandı
+    # TamamlandÃ½
     $MainProgressBar.Value = 100
-    $ProgressLabel.Text = "Tüm işlemler başarıyla tamamlandı!"
-    $OutputTextBox.AppendText("`r`n=== İŞLEMLER TAMAMLANDI ===`r`n")
-    $OutputTextBox.AppendText("Disk başarıyla oluşturuldu!`r`n")
-    $OutputTextBox.AppendText("USB diski güvenli bir şekilde çıkarabilirsiniz.`r`n")
+    $ProgressLabel.Text = "TÃ¼m iÃ¾lemler baÃ¾arÃ½yla tamamlandÃ½!"
+    $OutputTextBox.AppendText("`r`n=== ÃÃLEMLER TAMAMLANDI ===`r`n")
+    $OutputTextBox.AppendText("Disk baÃ¾arÃ½yla oluÃ¾turuldu!`r`n")
+    $OutputTextBox.AppendText("USB diski gÃ¼venli bir Ã¾ekilde Ã§Ã½karabilirsiniz.`r`n")
     $OutputTextBox.ScrollToCaret()
 
     Enable_Controls
 }
 
 Function Write_Additional_Files($usbntfs, $customPath, $bypassTPM) {
-    $OutputTextBox.AppendText("Ek dosyalar yazılıyor...`r`n")
+    $OutputTextBox.AppendText("Ek dosyalar yazÃ½lÃ½yor...`r`n")
     $OutputTextBox.ScrollToCaret()
 
-    # AutoUnattend.xml ve auto.cmd dosyaları
+    # AutoUnattend.xml ve auto.cmd dosyalarÃ½
     $targetAutoUnattend = Join-Path $usbntfs "AutoUnattend.xml"
     $targetauto = Join-Path $usbntfs "auto.cmd"
 
@@ -555,33 +554,33 @@ QGVjaG8gb2ZmJiB0aXRsZSBBdXRvIFVwZ3JhZGUgLSBNQ1QgfHwgIHN1cHBvcnRzIFVsdGltYXRlIC8g
         if ($customPath -ne "" -and (Test-Path $customPath)) {
             try {
                 Copy-Item $customPath $targetAutoUnattend -Force
-                $OutputTextBox.AppendText("Özel AutoUnattend.xml dosyası kopyalandı.`r`n")
+                $OutputTextBox.AppendText("Ã–zel AutoUnattend.xml dosyasÃ½ kopyalandÃ½.`r`n")
             } catch {
-                $OutputTextBox.AppendText("Özel AutoUnattend.xml dosyası kopyalanırken hata oluştu: $($_.Exception.Message)`r`n")
+                $OutputTextBox.AppendText("Ã–zel AutoUnattend.xml dosyasÃ½ kopyalanÃ½rken hata oluÃ¾tu: $($_.Exception.Message)`r`n")
                 # Fallback to base64 content if copying fails
                 if ($bypassTPM) {
                     [IO.File]::WriteAllBytes($targetAutoUnattend, [Convert]::FromBase64String($base64AutoUnattend))
-                    $OutputTextBox.AppendText("Varsayılan AutoUnattend.xml içeriği yazıldı (hata durumunda).`r`n")
+                    $OutputTextBox.AppendText("VarsayÃ½lan AutoUnattend.xml iÃ§eriÃ°i yazÃ½ldÃ½ (hata durumunda).`r`n")
                 }
             }
         } else {
             if ($bypassTPM) {
                 [IO.File]::WriteAllBytes($targetAutoUnattend, [Convert]::FromBase64String($base64AutoUnattend))
-                $OutputTextBox.AppendText("AutoUnattend.xml dosyası yazıldı.`r`n")
+                $OutputTextBox.AppendText("AutoUnattend.xml dosyasÃ½ yazÃ½ldÃ½.`r`n")
             }
         }
         if ($bypassTPM) {
             [IO.File]::WriteAllBytes($targetauto, [Convert]::FromBase64String($base64auto))
-            $OutputTextBox.AppendText("auto.cmd dosyası yazıldı.`r`n")
+            $OutputTextBox.AppendText("auto.cmd dosyasÃ½ yazÃ½ldÃ½.`r`n")
         }
     }
     $OutputTextBox.ScrollToCaret()
 }
 
-# Yönetici kontrolü
+# YÃ¶netici kontrolÃ¼
 If (!([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     If($param -eq "UAC_ERROR"){
-        [System.Windows.Forms.MessageBox]::Show("Yönetici Ayrıcalıkları için UAC yükseltme başarısız oldu!`n`nBetik üzerine sağ tıklayın ve 'Yönetici olarak çalıştır'ı seçin.", "Hata", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+        [System.Windows.Forms.MessageBox]::Show("YÃ¶netici AyrÃ½calÃ½klarÃ½ iÃ§in UAC yÃ¼kseltme baÃ¾arÃ½sÃ½z oldu!`n`nBetik Ã¼zerine saÃ° tÃ½klayÃ½n ve 'YÃ¶netici olarak Ã§alÃ½Ã¾tÃ½r'Ã½ seÃ§in.", "Hata", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
         exit
     }
 
@@ -603,19 +602,19 @@ $Form = New-Object System.Windows.Forms.Form -Property @{
     ForeColor = "White"; BackColor = "Gray"; Font = 'Consolas,10'
     Text = "$Title"; Width = $Width; Height = $Height
     StartPosition = "CenterScreen"; SizeGripStyle = "Hide"
-    ShowInTaskbar = $True; MaximizeBox = $False; # Kullanıcı genişletme engellendi
-    MinimizeBox = $True # Simge durumuna küçült simgesi eklendi
-    FormBorderStyle = 'FixedSingle' # Kullanıcının pencere boyutunu değiştirmesini engeller
+    ShowInTaskbar = $True; MaximizeBox = $False; # KullanÃ½cÃ½ geniÃ¾letme engellendi
+    MinimizeBox = $True # Simge durumuna kÃ¼Ã§Ã¼lt simgesi eklendi
+    FormBorderStyle = 'FixedSingle' # KullanÃ½cÃ½nÃ½n pencere boyutunu deÃ°iÃ¾tirmesini engeller
 }
 
-# Dosya tarayıcı
+# Dosya tarayÃ½cÃ½
 $FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{
-    Title="ISO imajı veya çıkarılmış kaynak klasöründe install.wim/esd seçin"
+    Title="ISO imajÃ½ veya Ã§Ã½karÃ½lmÃ½Ã¾ kaynak klasÃ¶rÃ¼nde install.wim/esd seÃ§in"
     Multiselect = $false
-    Filter = 'ISO imajları (*.iso;*install.wim;*install.esd)|*.iso;*install.wim;*install.esd'
+    Filter = 'ISO imajlarÃ½ (*.iso;*install.wim;*install.esd)|*.iso;*install.wim;*install.esd'
 }
 
-# USB disk kontrolü
+# USB disk kontrolÃ¼
 do {
     $FromDiskDrive = Get-CimInstance Win32_DiskDrive | Where-Object {
         $_.InterfaceType -eq 'USB' -or
@@ -626,7 +625,7 @@ do {
     }
 
     if ($FromDiskDrive.Count -eq 0) {
-        $result = [System.Windows.Forms.MessageBox]::Show("Disk bulunamadı.`n`nÖnce diskinizi takın veya bağlayın.", "Uyarı", [System.Windows.Forms.MessageBoxButtons]::RetryCancel, [System.Windows.Forms.MessageBoxIcon]::Warning)
+        $result = [System.Windows.Forms.MessageBox]::Show("Disk bulunamadÃ½.`n`nÃ–nce diskinizi takÃ½n veya baÃ°layÃ½n.", "UyarÃ½", [System.Windows.Forms.MessageBoxButtons]::RetryCancel, [System.Windows.Forms.MessageBoxIcon]::Warning)
         if ($result -eq [System.Windows.Forms.DialogResult]::Cancel) { exit }
         Start-Sleep -Seconds 2
     } else {
@@ -636,7 +635,7 @@ do {
 
 $Disks = $FromDiskDrive
 
-# Sekme kontrolü
+# Sekme kontrolÃ¼
 $TabControl = New-Object System.Windows.Forms.TabControl -Property @{
     Location = New-Object System.Drawing.Point(10, 10)
     Size = New-Object System.Drawing.Size(460, 330)
@@ -644,14 +643,14 @@ $TabControl = New-Object System.Windows.Forms.TabControl -Property @{
 
 # Ana sekme
 $MainTab = New-Object System.Windows.Forms.TabPage -Property @{
-    Text = "Ana Menü"
+    Text = "Ana MenÃ¼"
     BackColor = "Gray"
     ForeColor = "White"
 }
 
-# Nasıl kullanılır sekmesi
+# NasÃ½l kullanÃ½lÃ½r sekmesi
 $HowToTab = New-Object System.Windows.Forms.TabPage -Property @{
-    Text = "Nasıl Kullanılır?"
+    Text = "NasÃ½l KullanÃ½lÃ½r?"
     BackColor = "Gray"
     ForeColor = "White"
 }
@@ -665,25 +664,25 @@ $HowToText = New-Object System.Windows.Forms.RichTextBox -Property @{
     BorderStyle = "None"
     Font = "Arial,9"
     Text = @"
-1- USB aygıtınızı takın.
+1- USB aygÃ½tÃ½nÃ½zÃ½ takÃ½n.
 
-2- Windows ISO butonuna tıklayarak ISO dosyası ya da çıkarılmış klasördeki install.wim/esd dosyasını seçin.
-DİKKAT: Windows To Go işleminde esd dosyası hata verir.
+2- Windows ISO butonuna tÃ½klayarak ISO dosyasÃ½ ya da Ã§Ã½karÃ½lmÃ½Ã¾ klasÃ¶rdeki install.wim/esd dosyasÃ½nÃ½ seÃ§in.
+DÃKKAT: Windows To Go iÃ¾leminde esd dosyasÃ½ hata verir.
 
-3- Açılır menüden "Hedef USB Disk" seçin.
+3- AÃ§Ã½lÃ½r menÃ¼den "Hedef USB Disk" seÃ§in.
 
-4- "Windows Kurulum Diski" ya da "Windows To Go" seçeneğini seçin.
+4- "Windows Kurulum Diski" ya da "Windows To Go" seÃ§eneÃ°ini seÃ§in.
 
-5- Eğer "Windows Kurulum Diski" seçtiyseniz, isteğe bağlı olarak "Windows 11 Sistem gereksinimlerini atlat" seçeneğini işaretleyebilirsiniz.
+5- EÃ°er "Windows Kurulum Diski" seÃ§tiyseniz, isteÃ°e baÃ°lÃ½ olarak "Windows 11 Sistem gereksinimlerini atlat" seÃ§eneÃ°ini iÃ¾aretleyebilirsiniz.
 
-6- İsteğe bağlı olarak, "Özel AutoUnattend.xml dosyası seç" butonu ile kendi otomatik kurulum dosyanızı seçebilirsiniz.
+6- ÃsteÃ°e baÃ°lÃ½ olarak, "Ã–zel AutoUnattend.xml dosyasÃ½ seÃ§" butonu ile kendi otomatik kurulum dosyanÃ½zÃ½ seÃ§ebilirsiniz.
 
-7- Windows Kurulum Diski veya Windows To Go ortamı oluşturmak için "Diski Oluştur"a tıklayın.
+7- Windows Kurulum Diski veya Windows To Go ortamÃ½ oluÃ¾turmak iÃ§in "Diski OluÃ¾tur"a tÃ½klayÃ½n.
 "@
 }
 $HowToTab.Controls.Add($HowToText)
 
-# Çıktı text box
+# Ã‡Ã½ktÃ½ text box
 $OutputTextBox = New-Object System.Windows.Forms.TextBox -Property @{
     Location = New-Object System.Drawing.Point(10, 350)
     Size = New-Object System.Drawing.Size(460, 130)
@@ -723,7 +722,7 @@ $ProgressLabel = New-Object System.Windows.Forms.Label -Property @{
 $Label1 = New-Object System.Windows.Forms.Label -Property @{
     Location = New-Object System.Drawing.Point(20, 15)
     Size = New-Object System.Drawing.Size(400, 20)
-    Text = "Windows (ISO veya çıkarılmış kaynak klasörü)"
+    Text = "Windows (ISO veya Ã§Ã½karÃ½lmÃ½Ã¾ kaynak klasÃ¶rÃ¼)"
     ForeColor = "White"
     BackColor = "Gray"
 }
@@ -780,10 +779,10 @@ $BypassTPMCheckbox = New-Object System.Windows.Forms.CheckBox -Property @{
     Enabled = $True
 }
 
-# AutoUnattend Seç butonu
+# AutoUnattend SeÃ§ butonu
 $SelectAutoUnattendButton = New-Object System.Windows.Forms.Button -Property @{
     Location = New-Object System.Drawing.Point(45,210)
-    Text = "Özel Unattend.xml dosyası seç"
+    Text = "Ã–zel Unattend.xml dosyasÃ½ seÃ§"
     Size = New-Object System.Drawing.Size(275,30)
     Enabled = $True
 }
@@ -793,13 +792,13 @@ $ClearAutoUnattendButton = New-Object System.Windows.Forms.Button -Property @{
     Location = New-Object System.Drawing.Point(325, 210)
     Text = "Temizle"
     Size = New-Object System.Drawing.Size(80, 30)
-    Enabled = $True # Başlangıçta her zaman açık
+    Enabled = $True # BaÃ¾langÃ½Ã§ta her zaman aÃ§Ã½k
 }
 
 $ToolTip = New-Object System.Windows.Forms.ToolTip
 $ToolTip.Active = $True
 $ToolTip.ShowAlways = $True
-$ToolTip.SetToolTip($ClearAutoUnattendButton, "USB Disk Listesini yeniler ve kullanıcı seçimlerini temizler. `nYeni bir işleme başlamadan önce bu butonu kullanmanız önerilir.")
+$ToolTip.SetToolTip($ClearAutoUnattendButton, "USB Disk Listesini yeniler ve kullanÃ½cÃ½ seÃ§imlerini temizler. `nYeni bir iÃ¾leme baÃ¾lamadan Ã¶nce bu butonu kullanmanÃ½z Ã¶nerilir.")
 
 
 # WTG Liste (gizli)
@@ -819,20 +818,20 @@ $SelectISOButton = New-Object System.Windows.Forms.Button -Property @{
 $OKButton = New-Object System.Windows.Forms.Button -Property @{
     Location = New-Object System.Drawing.Point(160, 250)
     Size = New-Object System.Drawing.Size(160, 26)
-    Text = "Diski Oluştur"
+    Text = "Diski OluÃ¾tur"
     Enabled = $False
 }
 
 $ExitButton = New-Object System.Windows.Forms.Button -Property @{
     Location = New-Object System.Drawing.Point(325, 250)
     Size = New-Object System.Drawing.Size(80, 26)
-    Text = "Çıkış"
+    Text = "Ã‡Ã½kÃ½Ã¾"
 }
 
 $WTGSelectButton = New-Object System.Windows.Forms.Button -Property @{
     Location = New-Object System.Drawing.Point(410, 210)
     Size = New-Object System.Drawing.Size(40, 70)
-    Text = "Seç"
+    Text = "SeÃ§"
     Visible = $False
 }
 
@@ -904,9 +903,9 @@ $ClearAutoUnattendButton.Add_Click({
 	$BypassTPMCheckbox.Enabled = $True
     $ClearAutoUnattendButton.Enabled = $True
 	$OutputTextBox.Clear()
-	$OutputTextBox.AppendText("`r`nHazır`r`nISO dosyasını seçin ve 'Diski Oluştur' butonuna tıklayın.`r`n")
+	$OutputTextBox.AppendText("`r`nHazÃ½r`r`nISO dosyasÃ½nÃ½ seÃ§in ve 'Diski OluÃ¾tur' butonuna tÃ½klayÃ½n.`r`n")
 
-    # USB disk listesini yeniden yükle
+    # USB disk listesini yeniden yÃ¼kle
     $USBDiskList.Items.Clear()
     $FromDiskDrive = Get-CimInstance Win32_DiskDrive | Where-Object {
         $_.InterfaceType -eq 'USB' -or
@@ -928,20 +927,20 @@ $ClearAutoUnattendButton.Add_Click({
         $USBDiskList.SelectedIndex = -1
     }
 
-    # Özel Unattend.xml dosyası seç butonu pasifse aktif yap ve seçimi temizle
+    # Ã–zel Unattend.xml dosyasÃ½ seÃ§ butonu pasifse aktif yap ve seÃ§imi temizle
     if ($SelectAutoUnattendButton.Enabled -eq $False) {
         $SelectAutoUnattendButton.Enabled = $True
     }
     $Global:CustomAutoUnattendPath = ""
-    $SelectAutoUnattendButton.Text = "Özel Unattend.xml dosyası seç"
+    $SelectAutoUnattendButton.Text = "Ã–zel Unattend.xml dosyasÃ½ seÃ§"
     $ClearAutoUnattendButton.Enabled = $True 
 })
 
-# AutoUnattend seçimi
+# AutoUnattend seÃ§imi
 $SelectAutoUnattendButton.Add_Click({
     if ($CustomAutoUnattendBrowser.ShowDialog() -ne "Cancel") {
         $Global:CustomAutoUnattendPath = $CustomAutoUnattendBrowser.FileName
-        $SelectAutoUnattendButton.Text = "$($Global:CustomAutoUnattendPath.Split('\')[-1]) seçildi"
+        $SelectAutoUnattendButton.Text = "$($Global:CustomAutoUnattendPath.Split('\')[-1]) seÃ§ildi"
         $ClearAutoUnattendButton.Enabled = $True
 		$BypassTPMCheckbox.Enabled = $False
     }
@@ -970,7 +969,7 @@ $BypassTPMCheckbox.Add_CheckedChanged({
             $SelectAutoUnattendButton.Enabled = $False
             $ClearAutoUnattendButton.Enabled = $True
             $Global:CustomAutoUnattendPath = ""
-            $SelectAutoUnattendButton.Text = "Özel Unattend.xml dosyası seç"
+            $SelectAutoUnattendButton.Text = "Ã–zel Unattend.xml dosyasÃ½ seÃ§"
         } else {
             $SelectAutoUnattendButton.Enabled = $True
             $ClearAutoUnattendButton.Enabled = $True
@@ -984,7 +983,7 @@ $Wintogo.Add_CheckedChanged({
         $SelectAutoUnattendButton.Enabled = $False
         $ClearAutoUnattendButton.Enabled = $True
         $Global:CustomAutoUnattendPath = ""
-        $SelectAutoUnattendButton.Text = "Özel Unattend.xml dosyası seç"
+        $SelectAutoUnattendButton.Text = "Ã–zel Unattend.xml dosyasÃ½ seÃ§"
     }
 })
 
@@ -1009,7 +1008,7 @@ $Form.Controls.Add($OutputTextBox)
 $Form.Controls.Add($MainProgressBar)
 $Form.Controls.Add($ProgressLabel)
 
-$OutputTextBox.AppendText("`r`nHazır`r`nISO dosyasını seçin ve 'Diski Oluştur' butonuna tıklayın.`r`n")
+$OutputTextBox.AppendText("`r`nHazÃ½r`r`nISO dosyasÃ½nÃ½ seÃ§in ve 'Diski OluÃ¾tur' butonuna tÃ½klayÃ½n.`r`n")
 $OutputTextBox.ScrollToCaret()
 
 $Form.ShowDialog()
