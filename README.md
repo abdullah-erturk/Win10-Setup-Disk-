@@ -6,7 +6,7 @@
 
 
 ## ⚠️ DİKKAT
-> GUI arayüzde TR karakterlerin bozuk görünmemesi için bu dosyayı indirin: `tr_Win10+Setup-WinToGo.zip` 
+> GUI arayüzde Türkçe karakterlerin bozuk görünmemesi için bu dosyayı indirin: `tr_Win10+Setup-WinToGo.zip` 
 
 ## 🚀 Ne İşe Yarar?
 > Bu PowerShell aracı, bir Windows ISO dosyasından USB kurulum diski veya Windows To Go ortamı oluşturmanızı sağlar. ISO seçimi, disk biçimlendirme, sürüm seçimi ve kurulum adımları grafik arayüz üzerinden kolayca yönetilir.
