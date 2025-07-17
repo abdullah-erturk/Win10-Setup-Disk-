@@ -7,6 +7,7 @@
 
 ## ⚠️ DİKKAT
 > GUI arayüzde TR karakterlerin bozuk görünmemesi için bu dosyayı indirin: tr_Win10+Setup-WinToGo.zip
+
 > Bu PowerShell aracı, bir Windows ISO dosyasından USB kurulum diski veya Windows To Go ortamı oluşturmanızı sağlar. ISO seçimi, disk biçimlendirme, sürüm seçimi ve kurulum adımları grafik arayüz üzerinden kolayca yönetilir.
 
 > This PowerShell tool lets you create a USB installation disk or Windows To Go media from a Windows ISO file. ISO selection, disk formatting, version selection, and installation steps are easily managed through the graphical interface.
